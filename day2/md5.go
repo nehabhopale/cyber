@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	text := "nehaBhopale"
+	text := "rina@123rina"
 	fmt.Println(createHash(text))
 
 }
