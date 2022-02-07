@@ -118,12 +118,12 @@ func checkControl(userBellaLevel int, userBibaLevel int, operation string) []str
 	var filesAlllowedTowrite []string
 	for _, file := range metadata {
 		if operation == "read" {
-			if (file.BibaLevel > userBibaLevel) && (file.BellaLevel < userBellaLevel) {
+			if (file.BibaLevel >= userBibaLevel) && (file.BellaLevel <= userBellaLevel) {
 				filesAlllowedToread = append(filesAlllowedToread, file.name)
 
 			}
 		} else if operation == "write" {
-			if (file.BibaLevel < userBibaLevel) && (file.BellaLevel > userBellaLevel) {
+			if (file.BibaLevel <= userBibaLevel) && (file.BellaLevel >= userBellaLevel) {
 				filesAlllowedTowrite = append(filesAlllowedTowrite, file.name)
 			}
 
@@ -143,6 +143,7 @@ func main() {
 	var password string
 	var operation string
 	var filename string
+label1:
 	fmt.Println("Enter your name-")
 	fmt.Scanln(&username)
 	fmt.Println("Enter your password")
@@ -183,5 +184,6 @@ func main() {
 
 	} else {
 		fmt.Println("plz enter valid crediantials")
+		goto label1
 	}
 }
